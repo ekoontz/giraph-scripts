@@ -1,0 +1,13 @@
+#only exists on GIRAPH-211:
+#export MVN_PROFILE=hadoop_2.1.0
+#only exists on GIRAPH-211:
+#export MVN_PROFILE=hadoop_2.0.1
+export MVN_PROFILE=hadoop_2.0.3
+#export HADOOP_VERSION=2.1.0.tm6
+export HADOOP_VERSION=2.0.3
+export ZOOKEEPER_VERSION=3.4.3.tm6
+mvn clean
+#mvn -P${MVN_PROFILE} -DskipTests -Dhadoop.version=${HADOOP_VERSION} -Dzookeeper.version=${ZOOKEEPER_VERSION} compile
+mvn -P${MVN_PROFILE} -DskipTests -Dzookeeper.version=${ZOOKEEPER_VERSION} compile
+
+

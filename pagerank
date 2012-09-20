@@ -1,0 +1,19 @@
+#!/bin/sh
+JAR=`find $HOME/giraph/target -name "giraph*with-dependencies.jar" -maxdepth 1 -mindepth 1`
+~/giraph-scripts/killmr_apps.sh
+
+sleep 2
+
+HADOOP_RUNTIME=/Users/ekoontz/hadoop-runtime
+echo
+while [ "$?" -eq "0" ] ; do
+      #uncomment for dev work
+      rm -rf /tmp/logs
+
+      $HADOOP_RUNTIME/bin/hadoop jar $JAR \
+         org.apache.giraph.benchmark.PageRankBenchmark -Dgiraph.useNetty=true \
+	 -Dgiraph.logLevel=debug \
+         -Dgiraph.authenticate=true -e 6 -s 30 -v -V 10 -w 4
+      #uncomment for dev work
+      exit
+done

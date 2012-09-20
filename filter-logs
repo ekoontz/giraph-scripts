@@ -1,0 +1,20 @@
+#!/bin/bash 
+
+pushd `pwd`
+cd $HOME/giraph 
+
+rm syslog*
+
+mkdir -p /tmp/logs
+
+CONTAINER_2=`find /tmp/logs -type d -name "container_*0002" | head -n1`
+find $CONTAINER_2 -name syslog -exec cp '{}' ./syslog-container-2 ';'
+grep "client worker" syslog-container-2 > syslog-container-2.client
+grep "server worker" syslog-container-2 > syslog-container-2.server
+
+CONTAINER_3=`find /tmp/logs -type d -name "container_*0003" | head -n1`
+find $CONTAINER_3 -name syslog -exec cp '{}' ./syslog-container-3 ';'
+grep "client worker" syslog-container-3 > syslog-container-3.client
+grep "server worker" syslog-container-3 > syslog-container-3.server
+
+popd

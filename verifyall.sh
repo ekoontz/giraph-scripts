@@ -1,0 +1,1 @@
+mvn -Phadoop_non_secure clean verify && mvn -Phadoop_0.20.203 clean verify && mvn -Phadoop_1.0 clean verify && mvn -Phadoop0.23 clean verify && mvn -Phadoop_2.0.0 clean verify && mvn -Phadoop_2.0.1 clean verify
